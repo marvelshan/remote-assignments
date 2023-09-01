@@ -138,21 +138,21 @@ body{
     align-items: center;
     flex-wrap: wrap;
 }
-@media (min-width:700px){
+@media(min-width:1200px){
     .box1, .box2, .box3, .box4{
         margin: 10px;
-        padding: 10px 30px 80px 30px;
+        padding: 10px 0px 80px 0px;
         background-color: darkgrey;
-        width: 500px;
+        width: 550px;
         display: flex;
         justify-content: center; 
         align-items: center;
     }
 }
-@media (max-width:700px){
+@media (max-width:1200px){
     .box1, .box2, .box3, .box4{
         margin: 10px;
-        padding: 10px 30px 80px 30px;
+        padding: 10px 0px 80px 0px;
         background-color: darkgrey;
         width: 50%;
         display: flex;
