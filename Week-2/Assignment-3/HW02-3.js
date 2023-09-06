@@ -1,24 +1,30 @@
 function count(input) {
 // your code here
     let answer = {};
-    let count = 0;
     for(let i = 0; i < input.length; i++){
         if(answer[input[i]] = answer[input[i]]){
-            count +=1;
-            answer[input[i]] = count; 
+            answer[input[i]] += 1;
         } else {
-            answer[input[i]] = 1
+            answer[input[i]] = 1;
         }
     }
     return answer;
 }
-
-let input1 = ["a", "b", "c", "a", "c", "a", "x"];
+let input1 = ["a", "b", "c", "a", "c", "a", "x",];
 console.log(count(input1));
 // should print {a:3, b:1, c:2, x:1}
-function groupByKey(input) {
-    // your code here
 
+function groupByKey(input) {
+// your code here
+    let answer = {};
+    for(let i = 0; i < input.length; i++){
+        if(answer[input2[i].key] = answer[input2[i].key]){
+            answer[input2[i].key] += input2[i].value;
+        } else {
+            answer[input2[i].key] = input2[i].value;
+        }
+    }
+    return answer;
 }
 let input2 = [
     { key: "a", value: 3 },
