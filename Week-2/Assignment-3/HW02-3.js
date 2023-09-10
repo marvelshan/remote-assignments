@@ -2,7 +2,7 @@ function count(input) {
 // your code here
     let answer = {};
     for(let i = 0; i < input.length; i++){
-        if(answer[input[i]] = answer[input[i]]){
+        if(answer[input[i]]){
             answer[input[i]] += 1;
         } else {
             answer[input[i]] = 1;
@@ -18,7 +18,7 @@ function groupByKey(input) {
 // your code here
     let answer = {};
     for(let i = 0; i < input.length; i++){
-        if(answer[input2[i].key] = answer[input2[i].key]){
+        if(answer[input2[i].key]){
             answer[input2[i].key] += input2[i].value;
         } else {
             answer[input2[i].key] = input2[i].value;

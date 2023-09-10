@@ -1,10 +1,10 @@
     function max(numbers) {
         // your code here, for-loop method preferred
-        let result = 0;
+        let result = numbers[0];
         for(let i = 0; i < numbers.length; i++){
             if(result < numbers[i]){
                 result = numbers[i];
-            }
+            }   
         }
         return result;
     }

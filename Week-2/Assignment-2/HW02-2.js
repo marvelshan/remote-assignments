@@ -4,7 +4,7 @@ function avg(data) {
     for(let i = 0; i < data['products'].length; i++){
         answer = answer + data['products'][i].price;
     }
-    return answer;
+    return answer/data.size;
 }
 
 
