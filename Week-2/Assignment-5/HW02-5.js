@@ -10,9 +10,7 @@ function sequence(arr,target){
     }
     return arr;
 }
-let calculator =  ([1, 8, 9, 6, 7], 8);
 
-console.log(calculator.slice(1, 3));
 
 function binarySearchPosition(numbers, target) {
 // your code here
