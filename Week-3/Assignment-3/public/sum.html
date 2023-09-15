@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>總和計算機</h1>
+    <input type="text" id="numberCount" placeholder="輸入數字吧!">
+    <button id="buttonCount">送出</button>
+    <hr>
+    <div id="result">Result: </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let numberCount = document.getElementById('numberCount');
+            let buttonCount = document.getElementById('buttonCount');
+            let result = document.getElementById('result');
+            
+            buttonCount.addEventListener('click', () => {
+                const number = parseInt(numberCount.value);
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `/data?number=${number}`, true);
+                xhr.onload = function () {
+                    if(xhr.status === 200){
+                    const data = JSON.parse(xhr.responseText);
+                    console.log(xhr.responseText);
+                    result.textContent = `Result: ${data.result}`;
+                    } else {
+                        console.error('Error:', xhr.statusText);
+                    }
+                }
+                xhr.send();
+            })
+        });
+    </script>
+</body>
+</html>
