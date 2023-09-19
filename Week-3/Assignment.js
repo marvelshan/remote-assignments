@@ -39,10 +39,15 @@ app.get('/data', (req, res) => {
 app.get('/myName', (req, res) => {
     const userName = req.cookies.userName;
     if(userName){
-        res.send(`Hi ${userName}`);
+        res.send(`
+            Hi ${userName}
+            <form action="/remove" method="get">
+                <button>清除cookie</button>
+            </form>
+        `);
     } else {
         res.send(`    
-            <form action="/trackName" method="post">
+            <form action="/trackName" method="get">
                 <label for="name">輸入名稱:</label>
                 <input type="text" id="name" name="name">
                 <button type="submit">Submit</button>
@@ -51,26 +56,28 @@ app.get('/myName', (req, res) => {
     }
 });
 
-app.post('/trackName', (req, res) => {
-    const userName = req.body.name;
-    if(userName){
-        res.cookie('userName', userName);
+// app.post('/trackName', (req, res) => {
+//     const userName = req.body.name;
+//     if(userName){
+//         res.cookie('userName', userName);
 
-    } else {
-        res.clearCookie('userName');
-    }
-    const redirectURL = `/trackName?name=${encodeURIComponent(userName)}`;
-    res.redirect(redirectURL);
-});
+//     } else {
+//         res.clearCookie('userName');
+//     }
+//     const redirectURL = `/trackName?name=${encodeURIComponent(userName)}`;
+//     res.redirect(redirectURL);
+// });
 
 app.get('/trackName', (req, res) => {
     const userName = req.query.name;
-    if(userName){
-        res.sendFile('public/index.html', {root:__dirname});
-    } else {
-        res.redirect('/myname');
-    }
-})
+    res.cookie('userName', userName);
+    res.redirect('/myName');
+});
+
+app.get('/remove', (req, res) => {
+    res.clearCookie('userName');
+    res.redirect('/myName');
+});
 
 app.listen(3000, () => {
     console.log('原神!啟動!');
