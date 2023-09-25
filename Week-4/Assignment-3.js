@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+require('dotenv').config();
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'backup'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 });
 
 db.connect(err => {
@@ -67,7 +68,14 @@ app.post('/signin', (req, res) => {
             res.send('登入失敗');
             return;
         }
-        if(results){
+        if(results.length === 0){
+            res.send(`
+            <h1>密碼錯誤，請再次輸入</h1>
+            <form action="/" method="get">
+                <button>返回登入畫面</button>
+            </form>
+        `)
+        } else {
             res.redirect('/member');
         }
     })
